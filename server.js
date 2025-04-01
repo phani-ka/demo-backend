@@ -23,9 +23,9 @@ const PORT = process.env.PORT || 3000;
 const config = {
   user: "azureadmin", // better stored in an app setting such as process.env.DB_USER
   password: "phaneendra@89", // better stored in an app setting such as process.env.DB_PASSWORD
-  server: "threetiredb.database.windows.net", // better stored in an app setting such as process.env.DB_SERVER
+  server: "dbapp2.database.windows.net", // better stored in an app setting such as process.env.DB_SERVER
   port: 1433, // optional, defaults to 1433, better stored in an app setting such as process.env.DB_PORT
-  database: "threetiredb", // better stored in an app setting such as process.env.DB_NAME
+  database: "dbapp", // better stored in an app setting such as process.env.DB_NAME
   authentication: {
     type: "default",
   },
@@ -40,7 +40,7 @@ app.get("/customerInfo", (req, res) => {
   const data = req;
   sql.connect(config, function () {
     var request = new sql.Request();
-    request.query("select * from Employees", function (err, recordset) {
+    request.query("select * from person", function (err, recordset) {
       if (err) console.log(err);
       // res.end(JSON.stringify(recordset)); // Result in JSON format
       res.send(recordset);
